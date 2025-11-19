@@ -3,63 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PCWork - Сборка компьютеров</title>
+    <title>PCWork - Панель управления</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="container">
+    <div class="sidebar">
+        <div class="logo-container">
             <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/6d0cbbde-94c2-44e7-9b8b-8efe9485270f.png" alt="PCWork Logo" class="logo">
             <h1>PCWork</h1>
-            <p class="tagline">Профессиональная сборка компьютеров</p>
+            <p class="tagline">Панель управления</p>
         </div>
-    </header>
-    
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h2>Собираем компьютеры под ваши задачи</h2>
-                <p>Игровые ПК, рабочие станции, серверы - любая конфигурация с гарантией качества</p>
-            </div>
-        </section>
         
-        <section class="services">
-            <div class="container">
-                <h2>Наши услуги</h2>
-                <div class="service-grid">
-                    <div class="service-card">
-                        <h3>🎮 Игровые ПК</h3>
-                        <p>Мощные системы для комфортной игры в любые современные игры</p>
+        <div class="url-section">
+            <h3>Открыть приложение</h3>
+            <div class="input-group">
+                <input type="text" id="urlInput" placeholder="localhost:5000" value="http://localhost:5000">
+                <button onclick="loadUrl()" class="btn-primary">Открыть</button>
+            </div>
+            <div class="quick-links">
+                <button onclick="loadQuickUrl('http://localhost:5000')" class="quick-link">Localhost:5000</button>
+                <button onclick="loadQuickUrl('http://localhost:3000')" class="quick-link">Localhost:3000</button>
+                <button onclick="loadQuickUrl('http://localhost:8080')" class="quick-link">Localhost:8080</button>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h3>Справка</h3>
+            <div class="info-card">
+                <h4>🚀 Быстрый старт</h4>
+                <p>Введите адрес локального приложения в поле выше или выберите из быстрых ссылок.</p>
+            </div>
+            <div class="info-card">
+                <h4>⚙️ Возможности</h4>
+                <ul>
+                    <li>Просмотр на полный экран</li>
+                    <li>Быстрый доступ к приложениям</li>
+                    <li>Адаптивный интерфейс</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4>💡 Подсказка</h4>
+                <p>Для выхода из полноэкранного режима нажмите F11 или ESC.</p>
+            </div>
+        </div>
+        
+        <div class="footer-info">
+            <p>© 2025 PCWork</p>
+            <p class="version">v1.0.0</p>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="content-header">
+            <div class="header-left">
+                <h2 id="currentTitle">Добро пожаловать</h2>
+                <p id="currentUrl" class="current-url">Выберите приложение для открытия</p>
+            </div>
+            <div class="header-right">
+                <button onclick="toggleFullscreen()" class="btn-secondary" title="Полноэкранный режим">
+                    <span class="icon">⛶</span> Полный экран
+                </button>
+                <button onclick="reloadFrame()" class="btn-secondary" title="Обновить">
+                    <span class="icon">↻</span> Обновить
+                </button>
+            </div>
+        </div>
+        
+        <div class="iframe-container" id="iframeContainer">
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-content">
+                    <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/6d0cbbde-94c2-44e7-9b8b-8efe9485270f.png" alt="PCWork" class="welcome-logo">
+                    <h2>PCWork Dashboard</h2>
+                    <p>Профессиональная панель управления для работы с локальными приложениями</p>
+                    <div class="features">
+                        <div class="feature">
+                            <span class="feature-icon">🖥️</span>
+                            <h3>Удобный интерфейс</h3>
+                            <p>Современный дизайн для комфортной работы</p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">⚡</span>
+                            <h3>Быстрый доступ</h3>
+                            <p>Мгновенное переключение между приложениями</p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🔧</span>
+                            <h3>Гибкость</h3>
+                            <p>Поддержка любых локальных адресов</p>
+                        </div>
                     </div>
-                    <div class="service-card">
-                        <h3>💼 Рабочие станции</h3>
-                        <p>Производительные компьютеры для работы, дизайна и монтажа</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>🖥️ Офисные решения</h3>
-                        <p>Надежные системы для бизнеса и повседневных задач</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>🔧 Модернизация</h3>
-                        <p>Апгрейд и улучшение существующих компьютеров</p>
-                    </div>
+                    <button onclick="loadUrl()" class="btn-start">Начать работу →</button>
                 </div>
             </div>
-        </section>
-        
-        <section class="contact">
-            <div class="container">
-                <h2>Свяжитесь с нами</h2>
-                <p>Email: info@pcwork.ru</p>
-                <p>Телефон: +7 (XXX) XXX-XX-XX</p>
-            </div>
-        </section>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 PCWork. Все права защищены.</p>
+            <iframe id="contentFrame" style="display: none;"></iframe>
         </div>
-    </footer>
+    </div>
+    
+    <script src="script.js"></script>
 </body>
 </html>
